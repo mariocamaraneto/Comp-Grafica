@@ -8,6 +8,7 @@ void desenha();
 void inicializa(void);
 void AlteraTamanhoJanela(GLsizei w, GLsizei h);
 void Timer_altera(int);
+void Timer_altera2(int);
 void telhado();
 void paredes();
 void porta();
@@ -51,6 +52,7 @@ int main(int argc, char *argv[])
 	glutDisplayFunc(DISPLAY);
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutTimerFunc(800, Timer_altera,0);
+    glutTimerFunc(300, Timer_altera2,0);
 	inicializa();
 	glutMainLoop();
 
@@ -111,7 +113,13 @@ void Timer_altera(int value){
 		glutTimerFunc(800, Timer_altera,0);
 }
 
+void Timer_altera2(int value){
 
+	passo++;
+	glutPostRedisplay();
+	if(passo<4)
+		glutTimerFunc(800, Timer_altera,0);
+}
 
 
 
