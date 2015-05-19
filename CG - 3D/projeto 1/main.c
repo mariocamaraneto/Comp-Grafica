@@ -91,6 +91,12 @@ void TeclasEspeciais(int key, int x, int y)
     if(key == GLUT_KEY_RIGHT) {
     	eyeX -= 5;
     }
+    if (key == GLUT_KEY_UP){
+    	eyeY += 5;
+    }
+    if (key == GLUT_KEY_DOWN){
+    	eyeY -= 5;
+    }
     EspecificaParametrosVisualizacao();
     glutPostRedisplay();
 }
