@@ -10,6 +10,11 @@ void gabinete(float posx, float posy, float posz, float tamanho){
 
 }
 
+void memoriaRAM(float posx, float posy, float posz, float tamanho){
+	//desenha memoria RAM centralizada em pos@
+
+	caixa(posx, posy, posz, 15*tamanho, 0.2*tamanho, 3*tamanho);
+}
 
 void caixa(float posx, float posy, float posz, float tamx, float tamy, float tamz){
 	//função responsável por desenhar caixa de tamanho variado com o centro da caixa definido por pos

@@ -13,7 +13,9 @@ void Desenha(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glColor3f(0.0f, 0.0f, 0.0f);
-	gabinete(0,0,0,1);
+
+	//gabinete(0,0,0,1);
+	memoriaRAM(0,0,0,3);
 
 	// Executa os comandos OpenGL
 	glutSwapBuffers();
