@@ -10,10 +10,24 @@ void gabinete(float posx, float posy, float posz, float tamanho){
 
 }
 
-void memoriaRAM(float posx, float posy, float posz, float tamanho){
+void memoriaRAM(float posx, float posy, float posz, float tam){
 	//desenha memoria RAM centralizada em pos@
 
-	caixa(posx, posy, posz, 15*tamanho, 0.2*tamanho, 3*tamanho);
+
+	float tamRealX = 0.2, tamRealY = 15, tamRealZ = 3;
+
+	int qtdConectores = 30, qtdModulos = 5;
+
+	//desenha pente de memoria
+	glColor3f(0.0f, 1.0f, 0.0f);
+	caixa(posx, posy, posz, tamRealX*tam, tamRealY*tam, tamRealZ*tam);
+
+
+	//desenha modulos de memoria
+		float distancia = tamRealY/(qtdModulos+1);
+		float tamanhoModulo = distancia;
+		glColor3f(0.0f, 0.0f, 0.0f);
+		caixa(posx, posy, posz, tamRealX+10, tamRealY, tamRealZ);
 }
 
 void caixa(float posx, float posy, float posz, float tamx, float tamy, float tamz){
@@ -25,6 +39,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 
 	//face1 (frontal)
 	glBegin(GL_POLYGON);
+			glNormal3f(0.0, 1.0, 0.0);
 	            glVertex3f(posx+tamx, posy+tamy , posz+tamz);
 	            glVertex3f(posx-tamx, posy+tamy , posz+tamz);
 	            glVertex3f(posx-tamx, posy-tamy , posz+tamz);
@@ -32,6 +47,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 	glEnd();
 	//face2 - oposta a 1
 	glBegin(GL_POLYGON);
+			glNormal3f(0.0, 1.0, 0.0);
 				glVertex3f(posx+tamx, posy+tamy , posz-tamz);
 				glVertex3f(posx-tamx, posy+tamy , posz-tamz);
 				glVertex3f(posx-tamx, posy-tamy , posz-tamz);
@@ -41,6 +57,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 
 	//face3 (superior)
 	glBegin(GL_POLYGON);
+			glNormal3f(0.0, 1.0, 0.0);
 	            glVertex3f(posx+tamx, posy+tamy , posz+tamz);
 	            glVertex3f(posx-tamx, posy+tamy , posz+tamz);
 	            glVertex3f(posx-tamx, posy+tamy , posz-tamz);
@@ -48,6 +65,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 	glEnd();
 	//face4 - oposta a 3
 	glBegin(GL_POLYGON);
+			glNormal3f(0.0, 1.0, 0.0);
 				glVertex3f(posx+tamx, posy-tamy , posz+tamz);
 				glVertex3f(posx-tamx, posy-tamy , posz+tamz);
 				glVertex3f(posx-tamx, posy-tamy , posz-tamz);
@@ -57,6 +75,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 
 	//face5 - (laterais)
 	glBegin(GL_POLYGON);
+			glNormal3f(0.0, 1.0, 0.0);
 	            glVertex3f(posx+tamx, posy+tamy , posz+tamz);
 	            glVertex3f(posx+tamx, posy+tamy , posz-tamz);
 	            glVertex3f(posx+tamx, posy-tamy , posz-tamz);
@@ -64,6 +83,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 	glEnd();
 	//face6 - oposta a 5
 	glBegin(GL_POLYGON);
+			glNormal3f(0.0, 1.0, 0.0);
 				glVertex3f(posx-tamx, posy+tamy , posz+tamz);
 				glVertex3f(posx-tamx, posy+tamy , posz-tamz);
 				glVertex3f(posx-tamx, posy-tamy , posz-tamz);
