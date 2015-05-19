@@ -5,6 +5,7 @@
 
 GLfloat fAspect;
 GLdouble eyeX, eyeY, eyeZ;
+GLdouble oX, oY, oZ;
 
 
 // Função callback chamada para fazer o desenho
@@ -15,7 +16,7 @@ void Desenha(void)
 	glColor3f(0.0f, 0.0f, 0.0f);
 
 	//gabinete(0,0,0,1);
-	memoriaRAM(0,0,0,3);
+	memoriaRAM(0,0,10,3);
 
 	// Executa os comandos OpenGL
 	glutSwapBuffers();
@@ -27,10 +28,12 @@ void Inicializa (void)
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
     //onde começa a camera (olho do observador)
-    //inicia-se com uma distancia de 200 em z sobre o seu eixo.
+    //inicia-se com uma distancia de 100 em z sobre o seu eixo.
     eyeX = 0;
     eyeY = 0;
-    eyeZ = 200;
+    eyeZ = 100;
+
+    oX = oY = oZ = 0;
 }
 
 // Função usada para especificar o volume de visualização
@@ -42,7 +45,7 @@ void EspecificaParametrosVisualizacao(void)
 	glLoadIdentity();
 
 	// Especifica a projeção perspectiva
-    gluPerspective(45,fAspect,10,500);
+    gluPerspective(45,fAspect,1,500);
 
 	// Especifica sistema de coordenadas do modelo
 	glMatrixMode(GL_MODELVIEW);
@@ -50,7 +53,7 @@ void EspecificaParametrosVisualizacao(void)
 	glLoadIdentity();
 
 	// Especifica posição do observador e do alvo
-    gluLookAt(eyeX, eyeY, eyeZ, 0,0,0, 0,1,0);
+    gluLookAt(eyeX, eyeY, eyeZ, oX,oY,oZ, 0,1,0);
 }
 
 // Função callback chamada quando o tamanho da janela é alterado 
@@ -87,15 +90,19 @@ void TeclasEspeciais(int key, int x, int y)
 {
     if(key == GLUT_KEY_LEFT) {
     	eyeX += 5;
+    	oX +=5;
     }
     if(key == GLUT_KEY_RIGHT) {
     	eyeX -= 5;
+    	oX -= 5;
     }
     if (key == GLUT_KEY_UP){
     	eyeY += 5;
+    	oY += 5;
     }
     if (key == GLUT_KEY_DOWN){
     	eyeY -= 5;
+    	oY -= 5;
     }
     EspecificaParametrosVisualizacao();
     glutPostRedisplay();
@@ -103,13 +110,27 @@ void TeclasEspeciais(int key, int x, int y)
 
 void TeclasTeclado(unsigned char key, int x, int y){
 
+	if(key == 'g'){
+		Inicializa();
+		eyeZ = 0;
+		eyeX = 100;
+	}
+
+	if(key == 'h'){
+		Inicializa();
+		eyeZ = 100;
+		eyeX = 100;
+	}
+	EspecificaParametrosVisualizacao();
+	glutPostRedisplay();
 }
 
 // Programa Principal
 int main(int argc, char *argv[])
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL);
+	//glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(350,300);
 	glutCreateWindow("Computador e seus componentes");
 	glutDisplayFunc(Desenha);
