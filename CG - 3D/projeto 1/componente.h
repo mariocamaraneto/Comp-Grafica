@@ -15,6 +15,7 @@ void memoriaRAM(float, float, float, float);
 //############# funções genericas ###############
 
 void caixa(float, float, float, float, float, float);
+void caixaSemTampa(float, float, float, float, float, float);
 
 
 // fim           @MARIO CAMARA
