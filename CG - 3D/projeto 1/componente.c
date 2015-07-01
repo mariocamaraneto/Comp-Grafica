@@ -6,10 +6,9 @@ void gabinete(float posx, float posy, float posz, float tamanho){
 	//função responsavel por contruir gabinete
 	//faz uma caixa com as seguintes proporções 50x60x30
 
-	glColor3f(0.0f, 0.0f, 0.0f);
+	caixaSemTampa(posx,posy,posz, 50*tamanho, 60*tamanho, 20*tamanho);
 
-	caixaSemTampa(posx,posy,posz, 50*tamanho, 60*tamanho, 30*tamanho);
-
+	GLUquadric* quad = gluNewQuadric();
 }
 
 void memoriaRAM(float posx, float posy, float posz, float escala){
@@ -37,10 +36,18 @@ void memoriaRAM(float posx, float posy, float posz, float escala){
 
 }
 
+void placaMae(float posx, float posy, float posz, float tamanho){
+
+	glColor3f(0.0f, 0.2f, 0.0f);
+
+	caixaSemTampa(posx,posy,posz, 50*tamanho, 60*tamanho, 30*tamanho);
+
+}
 
 
-
-//Tipos PRIMITIVOS
+//#####################  Tipos PRIMITIVOS  ########################
+//desenhos que são utilizados como primitivas para
+//desenhos mais significativos
 
 
 
@@ -107,6 +114,8 @@ void caixaSemTampa(float posx, float posy, float posz, float tamx, float tamy, f
 	tamy = tamy/2;
 	tamz = tamz/2;
 
+
+	glColor3f(0.0f, 1.0f, 0.0f);
 	//face1 (frontal)
 	/*
 	glBegin(GL_POLYGON);
@@ -141,6 +150,8 @@ void caixaSemTampa(float posx, float posy, float posz, float tamx, float tamy, f
 	glEnd();
 
 
+
+	glColor3f(0.10f, 0.10f, 0.10f);
 	//face5 - (laterais)
 	glBegin(GL_POLYGON);
 			glVertex3f(posx+tamx, posy+tamy , posz+tamz);

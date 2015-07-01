@@ -1,5 +1,5 @@
-#ifndef COMPONENTE
-#define COMPONENTE
+#ifndef COMPONENTE_H
+#define COMPONENTE_H
 
 //              @MARIO CAMARA
 
@@ -9,7 +9,7 @@
 
 void gabinete(float, float, float, float);
 void memoriaRAM(float, float, float, float);
-
+void placaMae(float posx, float posy, float posz, float tamanho);
 
 
 //############# funções genericas ###############
