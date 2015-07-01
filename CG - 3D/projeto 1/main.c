@@ -2,12 +2,14 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 
 #include "componente.h"
 #include "video.h"
 #include "configvideo.h"
 
 
+extern int luzHDligada;
 
 // Função callback chamada para fazer o desenho
 void Desenha(void)
@@ -25,6 +27,18 @@ void Desenha(void)
  }
 
 
+//Funcao que gera movimentação no ambiente
+void timerFunc(int fatorDeAleatoriedade){
+
+	//fatorDeAleatoriedade serve para gerar numeros diferentes no mesmo segundo
+
+	srand( (unsigned)time(NULL) + fatorDeAleatoriedade);
+	luzHDligada = !(rand()%2);
+
+	glutTimerFunc(200,timerFunc, fatorDeAleatoriedade+1);
+	glutPostRedisplay();
+}
+
 // Programa Principal
 int main(int argc, char *argv[])
 {
@@ -39,6 +53,7 @@ int main(int argc, char *argv[])
 	glutMouseFunc(GerenciaMouse);
 	glutSpecialFunc(TeclasEspeciais);
 	glutKeyboardFunc(TeclasTeclado);
+	glutTimerFunc(500,timerFunc,0);
 	Inicializa();
 	glutMainLoop();
 }
