@@ -64,34 +64,34 @@ void TeclasTeclado(unsigned char key, int x, int y){
 
 	switch (key){
 		case 'w':
+		case 'W':
 			eyeX =eyeX-(velocidade*cos((anguloy+90)/57.32));
 			eyeZ = eyeZ-(velocidade*sin((anguloy+90)/57.32));
 			oX = oX-(velocidade*cos((anguloy+90)/57.32));
 			oZ = oZ-(velocidade*sin((anguloy+90)/57.32));
-			glutPostRedisplay();
 		break;
 		case 's':
+		case 'S':
 			eyeX =eyeX+(velocidade*cos((anguloy+90)/57.32));
 			eyeZ = eyeZ+(velocidade*sin((anguloy+90)/57.32));
 			oX = oX+(velocidade*cos((anguloy+90)/57.32));
 			oZ = oZ+(velocidade*sin((anguloy+90)/57.32));
-			glutPostRedisplay();
 		break;
 		case 'd':
+		case 'D':
 			eyeX = eyeX+(velocidade*sin((anguloy+90)/57.32));
 			eyeZ = eyeZ-(velocidade*cos((anguloy+90)/57.32));
 			oX = oX+(velocidade*sin((anguloy+90)/57.32));
 			oZ=oZ-(velocidade*cos((anguloy+90)/57.32));
-			glutPostRedisplay();
 		break;
 		case 'a':
+		case 'A':
 			eyeX = eyeX-(velocidade*sin((anguloy+90)/57.32));
 			eyeZ = eyeZ+(velocidade*cos((anguloy+90)/57.32));
 			oX = oX-(velocidade*sin((anguloy+90)/57.32));
 			oZ = oZ+(velocidade*cos((anguloy+90)/57.32));
-			glutPostRedisplay();
 		break;
-		case 'x':
+		case 27:
 			exit(0);
 		break;
 		default:

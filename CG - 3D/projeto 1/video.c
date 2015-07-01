@@ -49,7 +49,7 @@ void EspecificaParametrosVisualizacao(void)
 	glLoadIdentity();
 
 	// Especifica a projeção perspectiva
-    gluPerspective(90,fAspect,1,500);
+    gluPerspective(45,fAspect,1,500);
 
 
     //define rotação na camera do ambiente
