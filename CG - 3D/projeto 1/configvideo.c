@@ -2,9 +2,26 @@
 #include <GL/glut.h>
 #include <stdio.h>
 #include <math.h>
+#include <math.h>
+#include <time.h>
 
 #include "configvideo.h"
 #include "video.h"
+
+//Funcao que gera movimentação no ambiente
+void timerFunc(int fatorDeAleatoriedade){
+
+	//fatorDeAleatoriedade serve para gerar numeros diferentes no mesmo segundo
+
+	srand( (unsigned)time(NULL) + fatorDeAleatoriedade);
+	luzHDligada = !(rand()%2);
+
+	if(luzPCLigada)
+		glutTimerFunc(200,timerFunc, fatorDeAleatoriedade+1);
+	else
+		luzHDligada=0;
+	glutPostRedisplay();
+}
 
 
 // Função callback chamada para gerenciar eventos do mouse
@@ -90,6 +107,23 @@ void TeclasTeclado(unsigned char key, int x, int y){
 			eyeZ = eyeZ+(velocidade*cos((anguloy+90)/57.32));
 			oX = oX-(velocidade*sin((anguloy+90)/57.32));
 			oZ = oZ+(velocidade*cos((anguloy+90)/57.32));
+		break;
+		case 't':
+		case 'T':
+			if(tampaFechada)
+				tampaFechada=0;
+			else
+				tampaFechada=1;
+		break;
+		case 'l':
+		case 'L':
+			if(luzPCLigada){
+				luzPCLigada=0;
+			}else{
+				luzPCLigada=1;
+				glutTimerFunc(200,timerFunc,1);
+			}
+
 		break;
 		case 27:
 			exit(0);

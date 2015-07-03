@@ -19,11 +19,14 @@ extern int rotacao;
 extern int ponteiro;
 extern int i;//controle do for
 extern int trava_mouse; //Utilizada para travar o mouse na tela
+extern int tampaFechada; // Fecha a tampa lateral do computador quando for 0
+extern int luzHDligada;
+extern int luzPCLigada;
 
 void GerenciaMouse(int, int, int, int);
 void TeclasEspeciais(int, int, int);
 void TeclasTeclado(unsigned char, int, int);
 void MoveMouse(int, int);
-
+void timerFunc(int );
 
 #endif

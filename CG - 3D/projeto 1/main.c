@@ -1,15 +1,12 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <stdio.h>
-#include <math.h>
-#include <time.h>
+
 
 #include "componente.h"
 #include "video.h"
 #include "configvideo.h"
 
-
-extern int luzHDligada;
 
 // Função callback chamada para fazer o desenho
 void Desenha(void)
@@ -19,25 +16,18 @@ void Desenha(void)
 	//habilita profundidade
 	glEnable(GL_DEPTH_TEST);
 
+
 	gabinete(0,0,0,1);
-	memoriaRAM(0,0,0,1);
+	placaMae(     0, -1.0, -8.0, 1.5);
+	memoriaRAM( 10.0,  7.0, -6.0, 1);
+	memoriaRAM( 13.0,  7.0, -6.0, 1);
+
 
 	// Executa os comandos OpenGL
 	glutSwapBuffers();
  }
 
 
-//Funcao que gera movimentação no ambiente
-void timerFunc(int fatorDeAleatoriedade){
-
-	//fatorDeAleatoriedade serve para gerar numeros diferentes no mesmo segundo
-
-	srand( (unsigned)time(NULL) + fatorDeAleatoriedade);
-	luzHDligada = !(rand()%2);
-
-	glutTimerFunc(200,timerFunc, fatorDeAleatoriedade+1);
-	glutPostRedisplay();
-}
 
 // Programa Principal
 int main(int argc, char *argv[])
