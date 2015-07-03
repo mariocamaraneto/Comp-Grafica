@@ -9,7 +9,7 @@
 
 void gabinete(float, float, float, float);
 void memoriaRAM(float, float, float, float);
-void placaMae(float posx, float posy, float posz, float tamanho);
+void placaMae(float, float, float, float);
 
 
 //############# funções genericas ###############

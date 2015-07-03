@@ -1,8 +1,20 @@
 #include <GL/glu.h>
+#include <GL/gl.h>
 #include <GL/glut.h>
 #include "componente.h"
 
-int luzHDligada=0, luzPCLigada=1;
+int luzHDligada=0, luzPCLigada=1, tampaFechada=0;
+
+
+void placaMae(float posx, float posy, float posz, float tamanho){
+
+	double tamRealX=21, tamRealY=25, tamRealZ=0.2;
+
+	glColor3f(0.0f, 0.80f, 0.0f);
+	caixa(posx,posy,posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+
+}
+
 
 void gabinete(float posx, float posy, float posz, float tamanho){
 	//função responsavel por contruir gabinete
@@ -12,7 +24,6 @@ void gabinete(float posx, float posy, float posz, float tamanho){
 	double tamRealCDX=19, tamRealCDY=4.5,tamRealCDZ=16;
 	double tamRealFonteX=14, tamRealFonteY=8.5, tamRealFonteZ=15;
 	double tamRealBotaoLiga = 1.5, tamRealBotaoReset = 0.8, tamRealLuz = 0.3;
-
 
 	caixaSemTampa(posx,posy,posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
 
@@ -110,7 +121,7 @@ void memoriaRAM(float posx, float posy, float posz, float escala){
 
 	//desenha modulos de memoria
 
-	modPosY = (-tamRealPenteY*escala/2)+distanciaModBorda*escala;
+	modPosY = (-tamRealPenteY*escala/2)+distanciaModBorda*escala+posy;
 	for(int i=0; i<8; i++){
 		glColor3f(0.0f, 0.0f, 0.0f);
 		caixa(posx, modPosY, posz, tamRealModX*escala, tamRealModY*escala, tamRealModZ*escala);
@@ -119,14 +130,6 @@ void memoriaRAM(float posx, float posy, float posz, float escala){
 		modPosY += distanciaMod*escala + (tamRealModY*escala);
 	}
 
-
-}
-
-void placaMae(float posx, float posy, float posz, float tamanho){
-
-	glColor3f(0.0f, 0.2f, 0.0f);
-
-	caixaSemTampa(posx,posy,posz, 50*tamanho, 60*tamanho, 30*tamanho);
 
 }
 
@@ -239,15 +242,15 @@ void caixaSemTampa(float posx, float posy, float posz, float tamx, float tamy, f
 
 
 	glColor3f(0.0f, 0.0f, 0.0f);
-	//face1 (frontal)
-	/*
-	glBegin(GL_POLYGON);
-			glVertex3f(posx+tamx, posy+tamy , posz+tamz);
-			glVertex3f(posx-tamx, posy+tamy , posz+tamz);
-			glVertex3f(posx-tamx, posy-tamy , posz+tamz);
-			glVertex3f(posx+tamx, posy-tamy , posz+tamz);
-	glEnd();
-	*/
+	if(tampaFechada){
+		//face1 (frontal)
+		glBegin(GL_POLYGON);
+				glVertex3f(posx+tamx, posy+tamy , posz+tamz);
+				glVertex3f(posx-tamx, posy+tamy , posz+tamz);
+				glVertex3f(posx-tamx, posy-tamy , posz+tamz);
+				glVertex3f(posx+tamx, posy-tamy , posz+tamz);
+		glEnd();
+	}
 	//face2 - oposta a 1
 	glBegin(GL_POLYGON);
 			glVertex3f(posx+tamx, posy+tamy , posz-tamz);
