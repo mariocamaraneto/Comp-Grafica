@@ -3,7 +3,7 @@
 #include <GL/glut.h>
 #include "componente.h"
 
-int luzHDligada=0, luzPCLigada=1, tampaFechada=0;
+int luzHDligada=0, luzPCLigada=1, tampaFechada=1;
 
 
 void placaMae(float posx, float posy, float posz, float tamanho){

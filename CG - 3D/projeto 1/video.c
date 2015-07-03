@@ -18,8 +18,6 @@ GLfloat anguloy=0.0;
 
 int x_temp=-1;
 int y_temp=-1;
-int rotacao = 0;
-int ponteiro = 0;
 int i;//controle do for
 int trava_mouse=1; //Utilizada para travar o mouse na tela
 
@@ -31,9 +29,9 @@ void Inicializa (void)
 
     //onde começa a camera (olho do observador)
     //inicia-se com uma distancia de 100 em z sobre o seu eixo.
-    eyeX = 0;
+    eyeX = 60;
     eyeY = 0;
-    eyeZ = 15;
+    eyeZ = 65;
 
     oX = oY = oZ = 0;
 }
