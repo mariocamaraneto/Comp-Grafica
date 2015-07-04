@@ -19,8 +19,8 @@ void Desenha(void)
 
 	gabinete(0,0,0,1);
 	placaMae(     0, -1.0, -8.0, 1.5);
-	memoriaRAM( 10.0,  7.0, -6.0, 1);
-	memoriaRAM( 13.0,  7.0, -6.0, 1);
+	memoriaRAM( 10.0,  7.0, -6.4, 1);
+	memoriaRAM( 13.0,  7.0, -6.4, 1);
 
 
 	// Executa os comandos OpenGL
