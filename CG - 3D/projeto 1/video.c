@@ -29,11 +29,17 @@ void Inicializa (void)
 
     //onde começa a camera (olho do observador)
     //inicia-se com uma distancia de 100 em z sobre o seu eixo.
-    eyeX = 60;
+    eyeX = 74;
     eyeY = 0;
-    eyeZ = 65;
+    eyeZ = 67;
 
-    oX = oY = oZ = 0;
+
+    oX = 74;
+    oY = 0;
+    oZ = 2;
+
+    angulox = 0.059;
+    anguloy = -39.690;
 }
 
 
@@ -62,6 +68,7 @@ void EspecificaParametrosVisualizacao(void)
 
 	// Especifica posição do observador e do alvo
     gluLookAt(eyeX, eyeY, eyeZ, oX,oY,oZ, 0,1,0);
+
 }
 
 
