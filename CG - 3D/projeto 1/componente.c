@@ -38,11 +38,33 @@ void placaMae(float posx, float posy, float posz, float tamanho){
 
 	double tamRealX=21, tamRealY=25, tamRealZ=0.2;
 
+
+	//desenha base da placa mae
 	glColor3f(0.0f, 0.80f, 0.0f);
 	caixa(posx,posy,posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
 
+	chipset(    -3.0,  0.0, -7.8, 0.8*tamanho);
+	chipset(     7.0,-12.0, -7.8, 0.6*tamanho);
+
+	//desenha socket de acpi
+	socketPCI(posx,posy,posz,tamanho,tamRealZ);
+	socketPCI(posx,posy+(1.5*tamanho),posz,tamanho,tamRealZ);
+	socketPCI(posx,posy+(3.0*tamanho),posz,tamanho,tamRealZ);
 }
 
+void socketPCI(float posx, float posy, float posz, float tamanho, float tamRealPlacaMaeZ){
+
+	double tamRealAcpiX=8.5, tamRealAcpiY=0.80, tamRealAcpiZ=1.2;
+
+	glColor3f(0.85f, 0.85f, 0.85f);
+	double acpiX, acpiY, acpiZ;
+	acpiZ = posz+tamRealPlacaMaeZ*tamanho/2+tamRealAcpiZ*tamanho/2;
+	acpiY = posy + (-11.5*tamanho);
+	acpiX = posx + (-4.0*tamanho);
+	caixa(acpiX,acpiY,acpiZ, tamRealAcpiX*tamanho, tamRealAcpiY*tamanho, tamRealAcpiZ*tamanho);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	caixa(acpiX,acpiY,acpiZ, tamRealAcpiX*tamanho*0.9, tamRealAcpiY*tamanho*0.2, tamRealAcpiZ*tamanho+0.01);
+}
 
 void gabinete(float posx, float posy, float posz, float tamanho){
 	//função responsavel por contruir gabinete
@@ -221,7 +243,7 @@ void caixa(float posx, float posy, float posz, float tamx, float tamy, float tam
 
 	//Desenha vertices para dar noção de profundidade
 	glColor3f(0.30f, 0.30f, 0.30f);
-	glLineWidth(1.5);
+	glLineWidth(1.2);
 	glBegin(GL_LINE_LOOP);
 			glVertex3f(posx+tamx, posy+tamy , posz+tamz);
 			glVertex3f(posx-tamx, posy+tamy , posz+tamz);
