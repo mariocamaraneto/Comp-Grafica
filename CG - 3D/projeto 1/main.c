@@ -17,10 +17,11 @@ void Desenha(void)
 	glEnable(GL_DEPTH_TEST);
 
 	gabinete(0,0,0,1);
-	placaMae(     -9, -1.0, -8.0, 1.5);
-	memoriaRAM( 1.0,  7.0, -6.4, 1);
-	memoriaRAM( 4.0,  7.0, -6.4, 1);
+	placaMae(      -9, -1.0, -8.0, 1.5);
+	memoriaRAM(   1.0,  7.0, -6.4, 1);
+	memoriaRAM(   4.0,  7.0, -6.4, 1);
 	processador(-16.0,  8.0, -7.8, 1);
+	HardDisk(    15.0,-15.0,  0.0, 1);
 
 	// Executa os comandos OpenGL
 	glutSwapBuffers();

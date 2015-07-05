@@ -6,6 +6,16 @@
 int luzHDligada=0, luzPCLigada=1, tampaFechada=1;
 
 
+void HardDisk(float posx, float posy, float posz, float tamanho){
+	//especifica tamanho do HD -> se mudar o valor de tamRealZ será necessário trocar esse valor
+	//no codigo de gabinete o tamanho do superte de HD
+	double tamRealX=15, tamRealY=2, tamRealZ=10;
+
+	glColor3f(0.08f, 0.08f, 0.08f);
+	caixa(posx, posy, posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+
+}
+
 void chipset(float posx, float posy, float posz, float tamanho){
 	double tamRealX=3, tamRealY=3, tamRealZ=0.15;
 	double tamRealCoreX=2.5, tamRealCoreY=2.5, tamRealCoreZ=0.07;
@@ -96,6 +106,14 @@ void gabinete(float posx, float posy, float posz, float tamanho){
 	double tamRealBotaoLiga = 1.5, tamRealBotaoReset = 0.8, tamRealLuz = 0.3;
 
 	caixaSemTampa(posx,posy,posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+
+	//Desenha Suporte do HD
+		double tamHDZ=10;
+		glColor3f(0.17f, 0.17f, 0.17f);
+		caixa(18, 0, -tamHDZ/2, 6, tamRealY-0.1, 0.05 );
+		glColor3f(0.17f, 0.17f, 0.17f);
+		caixa(18, 0, +tamHDZ/2, 6, tamRealY-0.1, 0.05 );
+
 
 	//Desenha Drive de CD
 		glColor3f(0.70f, 0.70f, 0.70f);
