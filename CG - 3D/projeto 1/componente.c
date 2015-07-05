@@ -6,6 +6,20 @@
 int luzHDligada=0, luzPCLigada=1, tampaFechada=1;
 
 
+void chipset(float posx, float posy, float posz, float tamanho){
+	double tamRealX=3, tamRealY=3, tamRealZ=0.15;
+	double tamRealCoreX=2.5, tamRealCoreY=2.5, tamRealCoreZ=0.07;
+
+	//desenha base do chipset
+	glColor3f(0.0f, 0.23f, 0.0f);
+	caixa(posx, posy, posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+
+	//desenha o nucleo do chipset
+	glColor3f(0.30f, 0.30f, 0.30f);
+	caixa(posx, posy, posz+(tamRealZ*tamanho/2), tamRealCoreX*tamanho, tamRealCoreY*tamanho, tamRealCoreZ*tamanho);
+
+}
+
 void processador(float posx, float posy, float posz, float tamanho){
 
 	double tamRealX=5, tamRealY=5, tamRealZ=0.1;

@@ -22,6 +22,8 @@ void Desenha(void)
 	memoriaRAM( 10.0,  7.0, -6.4, 1);
 	memoriaRAM( 13.0,  7.0, -6.4, 1);
 	processador(-7.0,  8.0, -7.8, 1);
+	chipset(    -3.0,  0.0, -7.8, 1);
+	chipset(     7.0,-12.0, -7.8, 0.8);
 
 
 	// Executa os comandos OpenGL

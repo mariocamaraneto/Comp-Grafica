@@ -11,6 +11,7 @@ void gabinete(float, float, float, float);
 void memoriaRAM(float, float, float, float);
 void placaMae(float, float, float, float);
 void processador(float, float, float, float);
+void chipset(float, float, float, float);
 
 
 //############# funções genericas ###############
