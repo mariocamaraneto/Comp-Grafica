@@ -63,14 +63,59 @@ void placaMae(float posx, float posy, float posz, float tamanho){
 	glColor3f(0.0f, 0.80f, 0.0f);
 	caixa(posx,posy,posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
 
-	chipset(    -3.0+posx,  0.0+posy, superficieZ, 0.8*tamanho);
-	chipset(     7.0+posx,-12.0+posy, superficieZ, 0.6*tamanho);
+	chipset(    -3.0+posx,  0.0+posy, superficieZ, 1*tamanho);
+	chipset(     7.0+posx,-12.0+posy, superficieZ, 0.8*tamanho);
 
 	//desenha socket de acpi
 	socketPCI(posx,posy,superficieZ,tamanho);
 	socketPCI(posx,posy+(1.5*tamanho),superficieZ,tamanho);
 	socketPCI(posx,posy+(3.0*tamanho),superficieZ,tamanho);
 	socketPCIE(posx,posy+(4.5*tamanho),superficieZ,tamanho);
+
+
+
+	//desenha capactores
+	glColor3f(0.0f, 0.0f, 0.0f);
+	capacitor(posx, posy, posz, 0.3, 1.05);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	capacitor(posx+5, posy+8, posz, 0.3, 1.05);
+	glColor3f(0.5f, 0.0f, 0.0f);
+	capacitor(posx+5, posy+10, posz, 0.3, 0.85);
+	glColor3f(0.30f, 0.70f, 0.80f);
+	capacitor(posx+5, posy+13, posz, 0.5, 1.05);
+	glColor3f(0.0f, 0.0f, 0.40f);
+	capacitor(posx-13, posy+13, posz, 0.35, 1.05);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	capacitor(posx-13, posy+8, posz, 0.4, 1.05);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	capacitor(posx-13, posy+6, posz, 0.45, 1.05);
+	glColor3f(0.40f, 0.0f, 0.40f);
+	capacitor(posx+8, posy-7, posz, 0.4, 1.25);
+	glColor3f(0.0f, 0.50f, 0.70f);
+	capacitor(posx+5, posy-9, posz, 0.25, 1);
+	glColor3f(0.0f, 0.0f, 0.0f);
+	capacitor(posx+13, posy-11, posz, 0.32, 0.75);
+	glColor3f(0.0f, 0.60f, 0.60f);
+	capacitor(posx+14, posy-12, posz, 0.3, 1.05);
+
+}
+
+void capacitor(float posx, float posy, float posz, float largura, float altura){
+
+
+	glPushMatrix();
+		GLUquadric* quad = gluNewQuadric();
+		glTranslated( posx,  posy, posz);
+
+		gluCylinder(quad,  largura, largura ,  altura,  30,  10);
+		glTranslated( 0,  0, altura);
+		gluDisk( quad,  0,  largura,  30,  1);
+		glColor3f(0.85f, 0.85f, 0.85f);
+		glTranslated( 0,  0, 0.001);
+		gluDisk( quad,  0,  largura*0.5,  30,  1);
+
+	glPopMatrix();
+
 }
 
 void socketPCI(float posx, float posy, float posz, float tamanho){
