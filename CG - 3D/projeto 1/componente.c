@@ -84,11 +84,11 @@ void placaMae(float posx, float posy, float posz, float tamanho){
 	glColor3f(0.30f, 0.70f, 0.80f);
 	capacitor(posx+5, posy+13, posz, 0.5, 1.05);
 	glColor3f(0.0f, 0.0f, 0.40f);
-	capacitor(posx-13, posy+13, posz, 0.35, 1.05);
+	capacitor(posx-11.5, posy+13, posz, 0.35, 1.05);
 	glColor3f(0.0f, 0.0f, 0.0f);
-	capacitor(posx-13, posy+8, posz, 0.4, 1.05);
+	capacitor(posx-11.5, posy+8, posz, 0.4, 1.05);
 	glColor3f(0.0f, 0.0f, 0.0f);
-	capacitor(posx-13, posy+6, posz, 0.45, 1.05);
+	capacitor(posx-11.5, posy+6, posz, 0.45, 1.05);
 	glColor3f(0.40f, 0.0f, 0.40f);
 	capacitor(posx+8, posy-7, posz, 0.4, 1.25);
 	glColor3f(0.0f, 0.50f, 0.70f);
@@ -98,6 +98,70 @@ void placaMae(float posx, float posy, float posz, float tamanho){
 	glColor3f(0.0f, 0.60f, 0.60f);
 	capacitor(posx+14, posy-12, posz, 0.3, 1.05);
 
+
+	conectores(posx-(tamRealX*tamanho/2), posy+(tamRealY*tamanho/2), superficieZ, tamanho);
+
+}
+
+void conectores(float posx, float posy, float posz, float tamanho){
+	//recebe como parametro onde comeca a desenhar
+
+	GLUquadric* quad = gluNewQuadric();
+	glPushMatrix();
+
+		glTranslated(posx, posy, posz);
+
+		glPushMatrix();
+			//desenha conector ps2
+			float tamPs2X=2*tamanho, tamPs2Y=1.4*tamanho, tamPs2Z=3*tamanho;
+
+			glTranslated((tamPs2X/2)-0.3, -(tamPs2Y/2), (tamPs2Z/2));
+			glColor3f(0.50f, 0.50f, 0.50f);
+			caixa(0,0,0,tamPs2X,tamPs2Y,tamPs2Z);
+
+			glTranslated( -tamPs2X/2-0.01,  0, 0);
+			glRotated(-90, 0, 1, 0);
+			glColor3f(0.4f, 0.35f, 0.90f);
+			glTranslated(-1,0,0);
+			gluDisk( quad,  0,  0.7,  30,  1);
+
+			glTranslated(2,0,0);
+			glColor3f(0.0f, 0.90f, 0.20f);
+			gluDisk( quad,  0,  0.7,  30,  1);
+		glPopMatrix();
+
+		glTranslated(0, -(tamPs2Y+0.50), 0);
+
+		glPushMatrix();
+			float tamParalelaX=2.5*tamanho, tamParalelaY=5.4*tamanho, tamParalelaZ=1*tamanho;
+
+			glTranslated((tamParalelaX/2)-0.3, -(tamParalelaY/2), (tamParalelaZ/2));
+			glColor3f(0.50f, 0.50f, 0.50f);
+			caixa(0,0,0,tamParalelaX,tamParalelaY,tamParalelaZ);
+
+			glTranslated(-0.01,0,0);
+			glColor3f(0.75f, 0.10f, 0.75f);
+			caixa(0,0,0,tamParalelaX,tamParalelaY*0.9,tamParalelaZ*0.5);
+		glPopMatrix();
+
+		glTranslated(0, -(tamParalelaY+0.5), 0);
+
+		glPushMatrix();
+			float tamUSBX=1.8*tamanho, tamUSBY=1.5*tamanho, tamUSBZ=1.5*tamanho;
+
+			glTranslated((tamUSBX/2)-0.3,  -(tamUSBY/2), (tamUSBZ/2));
+			glColor3f(0.50f, 0.50f, 0.50f);
+			caixa(0,0,0,tamUSBX,tamUSBY,tamUSBZ);
+
+			glTranslated(-0.01,0, -tamUSBZ/4);
+			glColor3f(0.05f, 0.05f, 0.05f);
+			caixa(0,0,0,tamUSBX,tamUSBY*0.9,tamUSBZ*0.2);
+			glTranslated(-0.01,0, 2*tamUSBZ/4);
+			glColor3f(0.05f, 0.05f, 0.05f);
+			caixa(0,0,0,tamUSBX,tamUSBY*0.9,tamUSBZ*0.2);
+		glPopMatrix();
+
+	glPopMatrix();
 }
 
 void capacitor(float posx, float posy, float posz, float largura, float altura){

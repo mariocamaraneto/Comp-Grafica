@@ -16,6 +16,7 @@ void socketPCI(float, float, float, float);
 void socketPCIE(float, float, float, float);
 void HardDisk(float, float, float, float);
 void capacitor(float, float, float, float, float);
+void conectores(float, float, float, float);
 
 //############# funções genericas ###############
 
