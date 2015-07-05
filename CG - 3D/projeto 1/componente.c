@@ -14,6 +14,15 @@ void HardDisk(float posx, float posy, float posz, float tamanho){
 	glColor3f(0.08f, 0.08f, 0.08f);
 	caixa(posx, posy, posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
 
+	//desenha placa do circuito que fica na parte de baixo
+	glColor3f(0.08f, 0.38f, 0.08f);
+	caixa(posx-(tamRealX*tamanho/4)+0.5, posy-(tamRealY*tamanho/2)-0.1, posz, tamRealX*tamanho/2-0.2, 0.05*tamanho, (tamRealZ-0.4)*tamanho);
+
+	glColor3f(0.3f, 0.3f, 0.3f);
+	caixa(posx-(tamRealX*tamanho/2),posy-(tamRealY*tamanho/2), posz+tamRealZ*tamanho/4, 0.5, 0.5, 3);
+	glColor3f(0.3f, 0.3f, 0.3f);
+	caixa(posx-(tamRealX*tamanho/2),posy-(tamRealY*tamanho/2), posz-tamRealZ*tamanho/4, 0.5, 0.5, 4);
+
 }
 
 void chipset(float posx, float posy, float posz, float tamanho){
