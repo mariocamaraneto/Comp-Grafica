@@ -6,6 +6,20 @@
 int luzHDligada=0, luzPCLigada=1, tampaFechada=1;
 
 
+void processador(float posx, float posy, float posz, float tamanho){
+
+	double tamRealX=5, tamRealY=5, tamRealZ=0.1;
+	double tamRealCoreX=0.8, tamRealCoreY=1.2, tamRealCoreZ=0.04;
+
+	glColor3f(0.0f, 0.30f, 0.0f);
+	//desenha placa processador
+	caixa(posx, posy, posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+	//desenha o nucleo do processador
+	glColor3f(0.30f, 0.30f, 0.30f);
+	caixa(posx, posy, posz+(tamRealZ*tamanho/2), tamRealCoreX*tamanho, tamRealCoreY*tamanho, tamRealCoreZ*tamanho);
+
+}
+
 void placaMae(float posx, float posy, float posz, float tamanho){
 
 	double tamRealX=21, tamRealY=25, tamRealZ=0.2;
