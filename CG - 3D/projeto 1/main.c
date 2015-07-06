@@ -27,11 +27,30 @@ void Desenha(void)
 	glutSwapBuffers();
  }
 
+void apresentaOpcoes(){
+	system("clear");
+	printf("Comandos aceitos pelo programa\n");
+	printf("Navegação utilizando aswd\n");
+	printf("Controle de visão utilizando o mouse\n");
+	printf("Seta para uma navegação em profundidade\n");
+	printf("L - Liga e desliga o computador\n");
+	printf("C - Retira/Coloca o cooler para olhar o processador\n");
+	printf("T - Retira/Coloca a tampa lateral do computaor\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("Pressione qualquer tecla para iniciar...\n");
+
+	getchar();
+
+	printf("\n");
+}
 
 
 // Programa Principal
 int main(int argc, char *argv[])
 {
+	apresentaOpcoes();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH );
     glutInitWindowSize(350,300);
