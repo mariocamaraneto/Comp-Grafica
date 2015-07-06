@@ -20,9 +20,25 @@ void timerFunc(int fatorDeAleatoriedade){
 		glutTimerFunc(200,timerFunc, fatorDeAleatoriedade+1);
 	else
 		luzHDligada=0;
+
 	glutPostRedisplay();
 }
 
+
+
+
+void controlaCoolerTimer(int){
+
+	if(luzPCLigada){
+
+		if(anguloCooler>=360)
+			anguloCooler=0;
+		anguloCooler+=15;
+	}
+
+	glutTimerFunc(30,controlaCoolerTimer, 0);
+	glutPostRedisplay();
+}
 
 // Função callback chamada para gerenciar eventos do mouse
 void GerenciaMouse(int button, int state, int x, int y)
@@ -123,7 +139,13 @@ void TeclasTeclado(unsigned char key, int x, int y){
 				luzPCLigada=1;
 				glutTimerFunc(200,timerFunc,1);
 			}
-
+		break;
+		case 'c':
+		case 'C':
+			if(visibilidadeCooler)
+				visibilidadeCooler=0;
+			else
+				visibilidadeCooler=1;
 		break;
 		case 27:
 			exit(0);

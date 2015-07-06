@@ -43,7 +43,8 @@ int main(int argc, char *argv[])
 	glutMouseFunc(GerenciaMouse);
 	glutSpecialFunc(TeclasEspeciais);
 	glutKeyboardFunc(TeclasTeclado);
-	glutTimerFunc(500,timerFunc,0);
+	glutTimerFunc(200,timerFunc,0);
+	glutTimerFunc(200,controlaCoolerTimer,0);
 	Inicializa();
 	glutMainLoop();
 }

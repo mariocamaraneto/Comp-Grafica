@@ -3,7 +3,8 @@
 #include <GL/glut.h>
 #include "componente.h"
 
-int luzHDligada=0, luzPCLigada=1, tampaFechada=1;
+int luzHDligada=0, luzPCLigada=1, tampaFechada=1, visibilidadeCooler=1;
+float anguloCooler=0;
 
 
 void HardDisk(float posx, float posy, float posz, float tamanho){
@@ -43,14 +44,66 @@ void processador(float posx, float posy, float posz, float tamanho){
 
 	double tamRealX=5, tamRealY=5, tamRealZ=0.1;
 	double tamRealCoreX=0.8, tamRealCoreY=1.2, tamRealCoreZ=0.04;
+	double tamRealCoolerX=5.5, tamRealCoolerY=7, tamRealCoolerZ=3;
 
 	glColor3f(0.0f, 0.30f, 0.0f);
 	//desenha placa processador
 	caixa(posx, posy, posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
 	//desenha o nucleo do processador
 	glColor3f(0.30f, 0.30f, 0.30f);
-	caixa(posx, posy, posz+(tamRealZ*tamanho/2), tamRealCoreX*tamanho, tamRealCoreY*tamanho, tamRealCoreZ*tamanho);
+	caixa(posx, posy, posz+(tamRealZ*tamanho/2)+(tamRealCoreZ*tamanho/2), tamRealCoreX*tamanho, tamRealCoreY*tamanho, tamRealCoreZ*tamanho);
 
+
+
+	//if que verifica se cooler deve aparecer, senão a função encerra aqui e não é mostrado
+	if(!visibilidadeCooler)
+		return;
+
+	//desenha Cooler
+	glColor3f(0.75f, 0.75f, 0.75f);
+	caixa(posx, posy, posz+(tamRealZ*tamanho/2)+(tamRealCoreZ*tamanho)+(tamRealCoolerZ*tamanho/2), tamRealCoolerX*tamanho, tamRealCoolerY*tamanho, tamRealCoolerZ*tamanho);
+	//desenha Cooler -> não implementada em um função separada devido a quantidade de variaveis usadas nessa função
+	glPushMatrix();
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glTranslated(posx,posy,posz+(tamRealZ*tamanho/2)+(tamRealCoreZ*tamanho)+(tamRealCoolerZ*tamanho)+1);
+
+		glPushMatrix();
+		{
+			GLUquadric* quad = gluNewQuadric();
+			float largura = 0.23;
+
+			gluDisk( quad,  0, largura,  30,  1);
+			glTranslated(0,0,-1);
+			gluCylinder(quad, largura,  largura,  1,  30,  10);
+		}
+		glPopMatrix();
+
+		glRotated(anguloCooler,0,0,1);
+		glBegin(GL_POLYGON);
+			glVertex3f(0, 0, 0);
+			glVertex3f(0, 3.5, 0.2);
+			glVertex3f(0.8, 3.5, -0.8);
+			glVertex3f(0, 0 , -0.4);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glVertex3f(0, 0, 0);
+			glVertex3f(0, -3.5, 0.2);
+			glVertex3f(-0.8, -3.5, -0.8);
+			glVertex3f(0, 0 , -0.4);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glVertex3f(0, 0, 0);
+			glVertex3f(3.5, 0, 0.2);
+			glVertex3f(3.5, -0.8, -0.8);
+			glVertex3f(0, 0 , -0.4);
+		glEnd();
+		glBegin(GL_POLYGON);
+			glVertex3f(0, 0, 0);
+			glVertex3f(-3.5, 0, 0.2);
+			glVertex3f(-3.5, 0.8, -0.8);
+			glVertex3f(0, 0 , -0.4);
+		glEnd();
+	glPopMatrix();
 }
 
 void placaMae(float posx, float posy, float posz, float tamanho){

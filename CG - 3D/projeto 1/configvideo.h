@@ -22,11 +22,15 @@ extern int trava_mouse; //Utilizada para travar o mouse na tela
 extern int tampaFechada; // Fecha a tampa lateral do computador quando for 0
 extern int luzHDligada;
 extern int luzPCLigada;
+extern float anguloCooler;
+extern int visibilidadeCooler;
+
 
 void GerenciaMouse(int, int, int, int);
 void TeclasEspeciais(int, int, int);
 void TeclasTeclado(unsigned char, int, int);
 void MoveMouse(int, int);
 void timerFunc(int );
+void controlaCoolerTimer(int);
 
 #endif
