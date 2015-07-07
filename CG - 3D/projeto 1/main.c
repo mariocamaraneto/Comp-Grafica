@@ -36,8 +36,8 @@ void apresentaOpcoes(){
 	printf("L - Liga e desliga o computador\n");
 	printf("C - Retira/Coloca o cooler para olhar o processador\n");
 	printf("T - Retira/Coloca a tampa lateral do computaor\n");
-	printf("\n");
-	printf("\n");
+	printf("M - Retira/Coloca a mesa no ambiente\n");
+	printf("V - Alterna entre a visão ortográfica e em perspectiva\n");
 	printf("\n");
 	printf("Pressione qualquer tecla para iniciar...\n");
 
