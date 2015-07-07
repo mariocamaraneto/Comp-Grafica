@@ -38,7 +38,7 @@ void apresentaOpcoes(){
 	printf("T - Retira/Coloca a tampa lateral do computaor\n");
 	printf("M - Retira/Coloca a mesa no ambiente\n");
 	printf("V - Alterna entre a visão ortográfica e em perspectiva\n");
-	printf("\n");
+	printf("F - Para Fullscreen\n");
 	printf("Pressione qualquer tecla para iniciar...\n");
 
 	getchar();
@@ -53,9 +53,8 @@ int main(int argc, char *argv[])
 	apresentaOpcoes();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH );
-    glutInitWindowSize(350,300);
+    glutInitWindowSize(750,600);
 	glutCreateWindow("Computador e seus componentes");
-	glutFullScreen();
 	glutDisplayFunc(Desenha);
     glutReshapeFunc(AlteraTamanhoJanela);
     glutPassiveMotionFunc(MoveMouse);

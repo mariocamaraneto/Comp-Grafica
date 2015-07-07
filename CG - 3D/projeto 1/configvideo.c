@@ -159,6 +159,10 @@ void TeclasTeclado(unsigned char key, int x, int y){
 			else
 				visibilidadeMesa=1;
 		break;
+		case 'f':
+		case 'F':
+			glutFullScreen();
+		break;
 		case 27:
 			exit(0);
 		break;
