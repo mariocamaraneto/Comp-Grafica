@@ -3,7 +3,7 @@
 #include <GL/glut.h>
 #include "componente.h"
 
-int luzHDligada=0, luzPCLigada=1, tampaFechada=1, visibilidadeCooler=1;
+int luzHDligada=0, luzPCLigada=1, tampaFechada=1, visibilidadeCooler=1, visibilidadeMesa=1;
 float anguloCooler=0;
 
 
@@ -79,18 +79,11 @@ void processador(float posx, float posy, float posz, float tamanho){
 		glPopMatrix();
 
 		glRotated(anguloCooler,0,0,1);
-		glBegin(GL_POLYGON);
-			glVertex3f(0, 0, 0);
-			glVertex3f(0, 3.5, 0.2);
-			glVertex3f(0.8, 3.5, -0.8);
-			glVertex3f(0, 0 , -0.4);
-		glEnd();
-		glBegin(GL_POLYGON);
-			glVertex3f(0, 0, 0);
-			glVertex3f(0, -3.5, 0.2);
-			glVertex3f(-0.8, -3.5, -0.8);
-			glVertex3f(0, 0 , -0.4);
-		glEnd();
+
+		pasVentilador();
+		glRotated(45,0,0,1);
+		pasVentilador();
+
 		glBegin(GL_POLYGON);
 			glVertex3f(0, 0, 0);
 			glVertex3f(3.5, 0, 0.2);
@@ -104,6 +97,34 @@ void processador(float posx, float posy, float posz, float tamanho){
 			glVertex3f(0, 0 , -0.4);
 		glEnd();
 	glPopMatrix();
+}
+
+void pasVentilador(){
+	glBegin(GL_POLYGON);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, 3.5, 0.2);
+		glVertex3f(0.8, 3.5, -0.8);
+		glVertex3f(0, 0 , -0.4);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glVertex3f(0, 0, 0);
+		glVertex3f(0, -3.5, 0.2);
+		glVertex3f(-0.8, -3.5, -0.8);
+		glVertex3f(0, 0 , -0.4);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glVertex3f(0, 0, 0);
+		glVertex3f(3.5, 0, 0.2);
+		glVertex3f(3.5, -0.8, -0.8);
+		glVertex3f(0, 0 , -0.4);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glVertex3f(0, 0, 0);
+		glVertex3f(-3.5, 0, 0.2);
+		glVertex3f(-3.5, 0.8, -0.8);
+		glVertex3f(0, 0 , -0.4);
+	glEnd();
+
 }
 
 void placaMae(float posx, float posy, float posz, float tamanho){
@@ -124,8 +145,6 @@ void placaMae(float posx, float posy, float posz, float tamanho){
 	socketPCI(posx,posy+(1.5*tamanho),superficieZ,tamanho);
 	socketPCI(posx,posy+(3.0*tamanho),superficieZ,tamanho);
 	socketPCIE(posx,posy+(4.5*tamanho),superficieZ,tamanho);
-
-
 
 	//desenha capactores
 	glColor3f(0.0f, 0.0f, 0.0f);
@@ -267,6 +286,25 @@ void socketPCIE(float posx, float posy, float posz, float tamanho){
 	caixa(port2,acpiY,acpiZ, tamRealAcpiX*tamanho*0.7, tamRealAcpiY*tamanho*0.2, tamRealAcpiZ*tamanho+0.01);
 }
 
+
+void mesa(float posx, float posy, float posz, float tamanho){
+
+	double tamRealX=90, tamRealY=3, tamRealZ=50;
+
+	glColor3f(0.50f, 0.20f, 0.09f);
+	caixa(posx, posy-(tamRealY*tamanho/2)-0.08, posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+
+	//desenha pernas da mesa -> essa função não serve de exemplo para ninguem
+	glColor3f(0.50f, 0.20f, 0.09f);
+	caixa(posx+tamRealX/2*0.85, posy-(tamRealY*tamanho/2)-0.1-25, posz+tamRealZ/2*0.85, 5,50,5);
+	glColor3f(0.50f, 0.20f, 0.09f);
+	caixa(posx-tamRealX/2*0.85, posy-(tamRealY*tamanho/2)-0.1-25, posz+tamRealZ/2*0.85, 5,50,5);
+	glColor3f(0.50f, 0.20f, 0.09f);
+	caixa(posx-tamRealX/2*0.85, posy-(tamRealY*tamanho/2)-0.1-25, posz-tamRealZ/2*0.85, 5,50,5);
+	glColor3f(0.50f, 0.20f, 0.09f);
+	caixa(posx+tamRealX/2*0.85, posy-(tamRealY*tamanho/2)-0.1-25, posz-tamRealZ/2*0.85, 5,50,5);
+}
+
 void gabinete(float posx, float posy, float posz, float tamanho){
 	//função responsavel por contruir gabinete
 	//faz uma caixa com as seguintes proporções 50x60x30
@@ -277,6 +315,10 @@ void gabinete(float posx, float posy, float posz, float tamanho){
 	double tamRealBotaoLiga = 1.5, tamRealBotaoReset = 0.8, tamRealLuz = 0.3;
 
 	caixaSemTampa(posx,posy,posz, tamRealX*tamanho, tamRealY*tamanho, tamRealZ*tamanho);
+
+
+	if(visibilidadeMesa)
+		mesa(posx,posy-(tamRealY*tamanho/2), posz, 1);
 
 	//Desenha Suporte do HD
 		double tamHDZ=10;

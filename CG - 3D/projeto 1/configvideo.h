@@ -24,7 +24,8 @@ extern int luzHDligada;
 extern int luzPCLigada;
 extern float anguloCooler;
 extern int visibilidadeCooler;
-
+extern int visualizacaoOrtho;
+extern int visibilidadeMesa;
 
 void GerenciaMouse(int, int, int, int);
 void TeclasEspeciais(int, int, int);

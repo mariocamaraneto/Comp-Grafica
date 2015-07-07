@@ -25,8 +25,6 @@ void timerFunc(int fatorDeAleatoriedade){
 }
 
 
-
-
 void controlaCoolerTimer(int){
 
 	if(luzPCLigada){
@@ -146,6 +144,20 @@ void TeclasTeclado(unsigned char key, int x, int y){
 				visibilidadeCooler=0;
 			else
 				visibilidadeCooler=1;
+		break;
+		case 'v':
+		case 'V':
+			if(visualizacaoOrtho)
+				visualizacaoOrtho = 0;
+			else
+				visualizacaoOrtho = 1;
+		break;
+		case 'm':
+		case 'M':
+			if(visibilidadeMesa)
+				visibilidadeMesa=0;
+			else
+				visibilidadeMesa=1;
 		break;
 		case 27:
 			exit(0);
