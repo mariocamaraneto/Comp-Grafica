@@ -20,6 +20,7 @@ int x_temp=-1;
 int y_temp=-1;
 int i;//controle do for
 int trava_mouse=1; //Utilizada para travar o mouse na tela
+int visualizacaoOrtho = 0;
 
 
 // Inicializa parâmetros de rendering
@@ -52,8 +53,11 @@ void EspecificaParametrosVisualizacao(void)
 	// Inicializa sistema de coordenadas de projeção
 	glLoadIdentity();
 
-	// Especifica a projeção perspectiva
-    gluPerspective(45,fAspect,1,500);
+	if(visualizacaoOrtho)
+		glOrtho(-50,50, -40,40, -150,200);
+	else
+		// Especifica a projeção perspectiva
+		gluPerspective(45,fAspect,1,500);
 
 
     //define rotação na camera do ambiente
